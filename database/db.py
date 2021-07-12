@@ -1,11 +1,13 @@
 from pymongo import MongoClient
 import json
+import os
 
 CARRIER_PATH = "X:\Grofers_order_assignment\database\data\carrier.json"
 PARTNER_PATH = "X:\Grofers_order_assignment\database\data\delivery_partners.json"
 
 try:
-    con = MongoClient("localhost", 27017)
+    mongodb_uri = os.getenv('MONGODB_URI', default='mongodb://localhost:27017/')
+    con = MongoClient(mongodb_uri)
     print("Connected Successfully")
 except:
     print("Something went wrong")
