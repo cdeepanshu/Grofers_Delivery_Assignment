@@ -7,7 +7,7 @@ from database.db import get_all_carriers, get_all_partners, get_order_delivery
 
 
 app = Flask(__name__)
-app.config['MONGO_URI'] = "mongodb://localhost:27017/"
+app.config['MONGO_URI'] = os.getenv('MONGODB_URI', default='mongodb://localhost:27017/')
 
 mongo = PyMongo(app)
 
