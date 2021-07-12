@@ -6,9 +6,14 @@ from bson.json_util import dumps
 from database.db import get_all_carriers, get_all_partners, get_order_delivery
 
 
-app = Flask(__name__)
-app.config['MONGO_URI'] = os.getenv('MONGODB_URI', default='mongodb://localhost:27017/')
+MONGO_URL = os.environ.get('MONGO_URL')
 
+if not MONGO_URL:
+    MONGO_URL = "mongodb://localhost:27017/rest";
+
+app = Flask(__name__)
+
+app.config['MONGO_URI'] = MONGO_URL
 mongo = PyMongo(app)
 
 db = mongo.db
