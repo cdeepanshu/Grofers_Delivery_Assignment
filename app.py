@@ -43,4 +43,4 @@ def get_assigned_orders():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
